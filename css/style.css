@@ -1,0 +1,265 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+}
+
+input {
+    padding: 5px;
+    width: 200px;
+}
+
+/* プレイヤー名入力 */
+.players{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #dcdcdc;
+    font-size: 16px;
+}
+
+.user-label {
+    display: inline-block;
+    width: 80px;
+}
+
+.input-container {
+    margin-bottom: 10px;
+}
+/* プレイヤー名入力　ここまで */
+
+.toggle-options {
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+    text-align: center;
+    text-decoration: none;
+    background: linear-gradient(90deg, #6a4aff, #8c61ff);
+    /* 紫色のグラデーション */
+    border: none;
+    border-radius: 20px;
+    /* 丸みを強調 */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    /* 軽い影を追加 */
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.button-container {
+    margin-top: 10px;
+}
+
+/* ボタンのスタイル */
+.exec-button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(90deg, #ffa500, #ffcc00);
+    color: #fff;
+    font-size: 25px;
+    font-weight: bold;
+    padding: 10px 40px 10px 60px;
+    border: none;
+    border-radius: 10px;
+    clip-path: polygon(10% 0, 100% 0, 100% 100%, 0 100%, 5% 50%);
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.exec-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    width: 25px;
+    height: 25px;
+    background-color: #ffcc00;
+    border-radius: 50%;
+    box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.3);
+    z-index: 1;
+}
+
+.exec-button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    width: 15px;
+    height: 15px;
+    background-color: #ffcc00;
+    clip-path: polygon(100% 50%, 0 0, 0 100%);
+    z-index: 2;
+}
+
+.exec-button span {
+    position: relative;
+    z-index: 3;
+}
+
+/* ボタンのスタイル　ここまで */
+
+/* チェックボックスの設定 */
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+input[type="checkbox"] {
+    /* チェックボックスのデフォルトのスタイルを消去 */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 30px;
+    height: 30px;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    position: relative;
+    cursor: pointer;
+    background-color: #fff;
+}
+
+input[type="checkbox"]:checked {
+    /* チェックボックスがチェックされたとき */
+    background-color: #181818;
+    border-color: #ccc;
+}
+
+input[type="checkbox"]:checked::after {
+    /* チェックボックスがチェックされたときのチェックマーク */
+    content: '✔';
+    position: absolute;
+    top: -5px;
+    left: 2px;
+    font-size: 28px;
+    color: #4CAF50;
+}
+
+/* チェックボックスの設定　ここまで*/
+
+.options {
+    display: none;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #CCD9EE;
+}
+
+.pokemon-options-container {
+    display: none;
+    margin-top: 20px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #CCD9EE;
+}
+
+/* 構成のラジオボタンの設定 */
+input[type="radio"] {
+    /* ラジオボタンのデフォルトのスタイルを消去 */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    position: relative;
+    cursor: pointer;
+    background-color: #fff;
+}
+
+input[type="radio"]:checked {
+    /* ラジオボタンがチェックされたとき */
+    background-color: #181818;
+    border-color: #ccc;
+}
+
+input[type="radio"]:checked::after {
+    /* ラジオボタンがチェックされたときのチェックマーク */
+    content: '✔';
+    position: absolute;
+    top: -4px;
+    left: 1px;
+    font-size: 18px;
+    color: #4CAF50;
+}
+
+input[type="radio"]:disabled {
+    background-color: #ccc;
+    border-color: #ccc;
+}
+
+.radio-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* 構成のラジオボタンの設定　ここまで */
+
+/* チーム分け */
+.result {
+    display: none;
+    border-radius: 5px;
+    background-color: #4A5E77;
+    color: #fff;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.team{
+    margin-top: 5px;
+}
+
+.team-a {
+    background-color: #6E42BD;
+    color: #fff;
+}
+
+.team-b {
+    background-color: #D17927;
+    color: #fff;
+}
+
+.team ul{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+main {
+    padding: 10px;
+}
+
+footer {
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #4A5E77;
+    color: #fff;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+h2,h3{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}

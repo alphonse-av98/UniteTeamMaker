@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <title>Unite</title>
+    <meta name="description"
+        content="Unite Team Makerは、プレイヤーリストを入力するだけで、ランダムかつ公平にチームを自動生成し、友達とのプレイやカジュアルな大会をより楽しく簡単にする便利なツールです。">
+    <meta name="keywords"
+        content="ポケモンユナイト, チーム分けツール, ランダムチーム分け, ポケモンユナイトツール, マッチメイキング, カジュアル大会, ゲームチーム分け, ポケモンユナイトアプリ, チーム作成ツール, ポケモンユナイト便利ツール, Pokémon Unite, Unite Team Maker, Team Randomizer">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no,email=no,address=no">
+    <link rel="icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="icon.png">
+
+    <!-- Import Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Import CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Import JS/jQuery Library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <!-- START Header Area -->
+    <header>
+        <h1>Unite Team Maker</h1>
+        <hr>
+    </header>
+    <!-- END Header Area -->
+
+    <!-- START Main Area -->
+    <main>
+        <div class="players" id="players">
+            <div id="input-fields">
+                <div class="input-container">
+                    <label class="user-label" for="user1">User1:</label>
+                    <input type="text" id="user1" placeholder="User Name">
+                </div>
+                <div class="input-container">
+                    <label class="user-label" for="user2">User2:</label>
+                    <input type="text" id="user2" placeholder="User Name">
+                </div>
+                <div class="input-container">
+                    <label class="user-label" for="user3">User3:</label>
+                    <input type="text" id="user3" placeholder="User Name">
+                </div>
+                <div class="input-container">
+                    <label class="user-label" for="user4">User4:</label>
+                    <input type="text" id="user4" placeholder="User Name">
+                </div>
+                <div class="input-container">
+                    <label class="user-label" for="user5">User5:</label>
+                    <input type="text" id="user5" placeholder="User Name">
+                </div>
+                <div class="input-container">
+                    <label class="user-label" for="user6">User6:</label>
+                    <input type="text" id="user6" placeholder="User Name">
+                </div>
+                <div class="input-container">
+                    <label class="user-label" for="user7">User7:</label>
+                    <input type="text" id="user7" placeholder="User Name">
+                </div>
+                <div class="input-container">
+                    <label class="user-label" for="user8">User8:</label>
+                    <input type="text" id="user8" placeholder="User Name">
+                </div>
+                <div class="input-container">
+                    <label class="user-label" for="user9">User9:</label>
+                    <input type="text" id="user9" placeholder="User Name">
+                </div>
+                <div class="input-container">
+                    <label class="user-label" for="user10">User10:</label>
+                    <input type="text" id="user10" placeholder="User Name">
+                </div>
+            </div>
+        </div>
+        <button class="toggle-options" id="toggle-options">オプション設定を表示</button>
+        <!-- オプション設定 -->
+        <div id="options" class="options">
+            <h2>オプション設定</h2>
+            <div class="options-container">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="equalize" checked>人数を均等にする
+                </label>
+            </div>
+            <div class="options-container">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="lastteam" checked>前回と同じチームにならない
+                </label>
+            </div>
+            <div class="options-container">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="copy-to-clipbord" checked>自動的にクリップボードにコピーする
+                </label>
+            </div>
+            <div class="options-container">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="assignpokemon">ポケモンを割り当てる
+                </label>
+            </div>
+            <div class="pokemon-options-container" id="pokemon-options">
+                <div class="draft-option">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="draft">両チームに同じポケモンを選ばない
+                    </label>
+                </div>
+                <div class="pokemon-select-option">
+                    <h3>構成オプション</h3>
+                    <label class="radio-label">
+                        <input type="radio" name="pokemon" value="random" checked>ランダム
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="pokemon" value="sapport_or_tank" disabled>サポートorタンク２
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="pokemon" value="sapport_tank" disabled>サポート１、タンク１
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="pokemon" value="tank2" disabled>タンク２
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="pokemon" value="sapport2" disabled>サポート２
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="button-container">
+            <button class="exec-button" onclick="divideTeams()">チーム分け</button>
+        </div>
+        <div class="result" id="result">
+            <h2>RESULT</h2>
+            <div class="team team-a">
+                <h3>Team A</h3>
+                <ul id="teamA"></ul>
+            </div>
+            <div class="team team-b">
+                <h3>Team B</h3>
+                <ul id="teamB"></ul>
+            </div>
+        </div>
+    </main>
+    <!-- END Main Area -->
+    <hr>
+    <!-- START Footer Area -->
+    <footer>        
+        <a href="https://www.pokemonunite.jp/">▶ポケモンユナイト公式サイト</a>
+    </footer>
+    <!-- END Footer Area -->
+
+    <!-- Import JS -->
+    <script src="/js/function.js"></script>
+    <script src="/js/pokelist.js"></script>
+</body>
+
+</html>
