@@ -12,6 +12,7 @@ toggleButton.addEventListener("click", () => {
     }
 });
 
+// ポケモン選択のオプションの表示/非表示を切り替える
 const toggleCheckbox = document.getElementById("assignpokemon");
 const pokemonOption = document.getElementById("pokemon-options");
 toggleCheckbox.addEventListener("change", () => {
@@ -29,8 +30,15 @@ function divideTeams() {
     // 空欄のユーザーを削除
     const filteredUsers = users.filter(user => user);
 
+    // ユーザーが2人未満の場合はエラーを表示
     if (filteredUsers.length < 2) {
         alert('ユーザーが2人以上必要です');
+        return;
+    }
+
+    // ユーザー名に重複がある場合はエラーを表示
+    if (new Set(filteredUsers).size !== filteredUsers.length) {
+        alert('ユーザー名が重複しています');
         return;
     }
 
@@ -40,8 +48,6 @@ function divideTeams() {
 
     do {
         const sliceIndex = document.getElementById('equalize').checked === true ? Math.floor(filteredUsers.length / 2 + filteredUsers.length % 2) : Math.floor(Math.random() * filteredUsers.length + 1);
-
-        console.log(sliceIndex);
 
         // ランダムにユーザーをシャッフル
         shuffledUsers = filteredUsers.sort(() => Math.random() - 0.5);
@@ -60,17 +66,16 @@ function divideTeams() {
         pokemonTeamA = [];
         pokemonTeamB = [];
 
+
         if (document.getElementById('draft').checked) {
-            const pokemons = pokemonSelect(filteredUsers.length);
-            for (let i = 0; i < teamA.length; i++) {
-                pokemonTeamA.push(pokemons[i]);
-            }
-            for (let i = 0; i < teamB.length; i++) {
-                pokemonTeamB.push(pokemons[i + teamA.length]);
-            }
+            // 同両チームに同じポケモンを選ばない場合のロジック
+            let pokemons = selectedCompositionTeamDraft(document.querySelector('input[name="composition"]:checked').value);
+            pokemonTeamA = pokemons.slice(0, 5);
+            pokemonTeamB = pokemons.slice(5, 10);
         } else {
-            pokemonTeamA = pokemonSelect(teamA.length);
-            pokemonTeamB = pokemonSelect(teamB.length);
+            const selectedComposition = document.querySelector('input[name="composition"]:checked');
+            pokemonTeamA = selectedCompositionTeam(selectedComposition.value);
+            pokemonTeamB = selectedCompositionTeam(selectedComposition.value);
         }
     }
 
@@ -78,12 +83,14 @@ function divideTeams() {
     displayTeam('teamA', teamA, pokemonTeamA);
     displayTeam('teamB', teamB, pokemonTeamB);
 
+    // RESULT部分を可視化
     const resultElement = document.getElementById('result');
     if (resultElement.style.display === "none" || resultElement.style.display === "") {
         resultElement.style.display = "block"; // 表示
     }
 
-    if(document.getElementById('copy-to-clipbord').checked){
+    // クリップボードにコピー
+    if (document.getElementById('copy-to-clipbord').checked) {
         copyToClipbord();
     }
 }
@@ -120,10 +127,112 @@ function pokemonSelect(index) {
     return pokemons;
 }
 
-function copyToClipbord(){
+function pokemonFilteringSelect(index, battleStyle) {
+    let pokemons = [];
+    do {
+        let pokemon = pokemonList[Math.floor(Math.random() * pokemonList.length)];
+        if (pokemons.includes(pokemon)) continue;
+        if (!battleStyle.includes(pokemon.battleStyle)) continue;
+        pokemons.push(pokemon);
+    } while (pokemons.length < index);
+    return pokemons;
+}
+
+function copyToClipbord() {
     const teamA = document.getElementById('teamA').innerText.replace(/\n/g, ',');
     const teamB = document.getElementById('teamB').innerText.replace(/\n/g, ',');
     const result = 'TeamA : ' + teamA + '\nTeamB : ' + teamB;
     navigator.clipboard.writeText(result);
 }
 
+function selectedCompositionTeam(composition) {
+    let pokemonTeam = [];
+    switch (composition) {
+        case 'random':
+            pokemonTeam = pokemonSelect(5);
+            break;
+        case 'sapport_or_tank':
+            pokemonTeam = pokemonTeam.concat(pokemonFilteringSelect(2, ['サポート', 'ディフェンス']));
+            pokemonTeam = pokemonTeam.concat(pokemonFilteringSelect(3, ['アタック', 'スピード', 'バランス']));
+            pokemonTeam.sort(() => Math.random() - 0.5);
+            break;
+        case 'sapport_tank':
+            pokemonTeam = pokemonTeam.concat(pokemonFilteringSelect(1, ['サポート']));
+            pokemonTeam = pokemonTeam.concat(pokemonFilteringSelect(1, ['ディフェンス']));
+            pokemonTeam = pokemonTeam.concat(pokemonFilteringSelect(3, ['アタック', 'スピード', 'バランス']));
+            pokemonTeam.sort(() => Math.random() - 0.5);
+            break;
+        case 'tank2':
+            pokemonTeam = pokemonTeam.concat(pokemonFilteringSelect(2, ['ディフェンス']));
+            pokemonTeam = pokemonTeam.concat(pokemonFilteringSelect(3, ['アタック', 'スピード', 'バランス']));
+            pokemonTeam.sort(() => Math.random() - 0.5);
+            break;
+        case 'sapport2':
+            pokemonTeam = pokemonTeam.concat(pokemonFilteringSelect(2, ['サポート']));
+            pokemonTeam = pokemonTeam.concat(pokemonFilteringSelect(3, ['アタック', 'スピード', 'バランス']));
+            pokemonTeam.sort(() => Math.random() - 0.5);
+            break;
+        default:
+            pokemonTeam = pokemonSelect(5);
+            break;
+    }
+    return pokemonTeam;
+}
+
+function selectedCompositionTeamDraft(composition) {
+    let pokemonTeam = [];
+    switch (composition) {
+        case 'random':
+            pokemonTeam = pokemonSelect(10);
+            break;
+        case 'sapport_or_tank':
+            {
+                let support_tank = pokemonFilteringSelect(4, ['サポート', 'ディフェンス']);
+                let others = pokemonFilteringSelect(6, ['アタック', 'スピード', 'バランス']);
+                let teamA = [support_tank[0], support_tank[1], others[0], others[1], others[2]];
+                teamA.sort(() => Math.random() - 0.5);
+                let teamB = [support_tank[2], support_tank[3], others[3], others[4], others[5]];
+                teamB.sort(() => Math.random() - 0.5);
+                pokemonTeam = teamA.concat(teamB);
+            }
+            break;
+        case 'sapport_tank':
+            {
+                let support = pokemonFilteringSelect(2, ['サポート'])
+                let tank = pokemonFilteringSelect(2, ['ディフェンス']);
+                let others = pokemonFilteringSelect(6, ['アタック', 'スピード', 'バランス']);
+                let teamA = [support[0], tank[0], others[0], others[1], others[2]];
+                teamA.sort(() => Math.random() - 0.5);
+                let teamB = [support[1], tank[1], others[3], others[4], others[5]];
+                teamB.sort(() => Math.random() - 0.5);
+                pokemonTeam = teamA.concat(teamB);
+            }
+            break;
+        case 'tank2':
+            {
+                let tank = pokemonFilteringSelect(4, ['ディフェンス']);
+                let others = pokemonFilteringSelect(6, ['アタック', 'スピード', 'バランス']);
+                let teamA = [tank[0], tank[1], others[0], others[1], others[2]];
+                teamA.sort(() => Math.random() - 0.5);
+                let teamB = [tank[2], tank[3], others[3], others[4], others[5]];
+                teamB.sort(() => Math.random() - 0.5);
+                pokemonTeam = teamA.concat(teamB);
+            }
+            break;
+        case 'sapport2':
+            {
+                let support = pokemonFilteringSelect(4, ['サポート']);
+                let others = pokemonFilteringSelect(6, ['アタック', 'スピード', 'バランス']);
+                let teamA = [support[0], support[1], others[0], others[1], others[2]];
+                teamA.sort(() => Math.random() - 0.5);
+                let teamB = [support[2], support[3], others[3], others[4], others[5]];
+                teamB.sort(() => Math.random() - 0.5);
+                pokemonTeam = teamA.concat(teamB);
+            }
+            break;
+        default:
+            pokemonTeam = pokemonSelect(10);
+            break;
+    }
+    return pokemonTeam;
+}
