@@ -139,9 +139,9 @@ function pokemonFilteringSelect(index, battleStyle) {
 }
 
 function copyToClipbord() {
-    const teamA = document.getElementById('teamA').innerText.replace(/\n/g, ',');
-    const teamB = document.getElementById('teamB').innerText.replace(/\n/g, ',');
-    const result = 'TeamA : ' + teamA + '\nTeamB : ' + teamB;
+    const teamA = document.getElementById('teamA').innerText.replace(/\n/g, '\n\t');
+    const teamB = document.getElementById('teamB').innerText.replace(/\n/g, '\n\t');
+    const result = 'TeamA :\n\t' + teamA + '\nTeamB :\n\t' + teamB;
     navigator.clipboard.writeText(result);
 }
 
