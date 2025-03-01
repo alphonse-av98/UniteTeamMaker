@@ -151,12 +151,12 @@ function selectedCompositionTeam(composition) {
         case 'random':
             pokemonTeam = pokemonSelect(5);
             break;
-        case 'sapport_or_tank':
+        case 'support_or_tank':
             pokemonTeam = pokemonTeam.concat(pokemonFilteringSelect(2, ['サポート', 'ディフェンス']));
             pokemonTeam = pokemonTeam.concat(pokemonFilteringSelect(3, ['アタック', 'スピード', 'バランス']));
             pokemonTeam.sort(() => Math.random() - 0.5);
             break;
-        case 'sapport_tank':
+        case 'support_tank':
             pokemonTeam = pokemonTeam.concat(pokemonFilteringSelect(1, ['サポート']));
             pokemonTeam = pokemonTeam.concat(pokemonFilteringSelect(1, ['ディフェンス']));
             pokemonTeam = pokemonTeam.concat(pokemonFilteringSelect(3, ['アタック', 'スピード', 'バランス']));
@@ -167,10 +167,13 @@ function selectedCompositionTeam(composition) {
             pokemonTeam = pokemonTeam.concat(pokemonFilteringSelect(3, ['アタック', 'スピード', 'バランス']));
             pokemonTeam.sort(() => Math.random() - 0.5);
             break;
-        case 'sapport2':
+        case 'support2':
             pokemonTeam = pokemonTeam.concat(pokemonFilteringSelect(2, ['サポート']));
             pokemonTeam = pokemonTeam.concat(pokemonFilteringSelect(3, ['アタック', 'スピード', 'バランス']));
             pokemonTeam.sort(() => Math.random() - 0.5);
+            break;
+        case 'all_support_tank':
+            pokemonTeam = pokemonFilteringSelect(5, ['サポート', 'ディフェンス']).sort(() => Math.random() - 0.5);
             break;
         default:
             pokemonTeam = pokemonSelect(5);
@@ -185,7 +188,7 @@ function selectedCompositionTeamDraft(composition) {
         case 'random':
             pokemonTeam = pokemonSelect(10);
             break;
-        case 'sapport_or_tank':
+        case 'support_or_tank':
             {
                 let support_tank = pokemonFilteringSelect(4, ['サポート', 'ディフェンス']);
                 let others = pokemonFilteringSelect(6, ['アタック', 'スピード', 'バランス']);
@@ -196,7 +199,7 @@ function selectedCompositionTeamDraft(composition) {
                 pokemonTeam = teamA.concat(teamB);
             }
             break;
-        case 'sapport_tank':
+        case 'support_tank':
             {
                 let support = pokemonFilteringSelect(2, ['サポート'])
                 let tank = pokemonFilteringSelect(2, ['ディフェンス']);
@@ -219,7 +222,7 @@ function selectedCompositionTeamDraft(composition) {
                 pokemonTeam = teamA.concat(teamB);
             }
             break;
-        case 'sapport2':
+        case 'support2':
             {
                 let support = pokemonFilteringSelect(4, ['サポート']);
                 let others = pokemonFilteringSelect(6, ['アタック', 'スピード', 'バランス']);
@@ -228,6 +231,11 @@ function selectedCompositionTeamDraft(composition) {
                 let teamB = [support[2], support[3], others[3], others[4], others[5]];
                 teamB.sort(() => Math.random() - 0.5);
                 pokemonTeam = teamA.concat(teamB);
+            }
+            break;
+        case 'all_support_tank':
+            {
+                pokemonTeam = pokemonFilteringSelect(10, ['サポート', 'ディフェンス']).sort(() => Math.random() - 0.5);
             }
             break;
         default:
