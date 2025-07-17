@@ -72,5 +72,7 @@ const pokemonList = [
     { name: "ガラルギャロップ", battleStyle: "スピード", range: "近接", type: "特攻" },
     { name: "スイクン", battleStyle: "バランス", range: "遠隔", type: "特攻" },
     { name: "アローラライチュウ", battleStyle: "アタック", range: "遠隔", type: "特攻" },
-    { name: "マホイップ", battleStyle: "サポート", range: "遠隔", type: "特攻" }
+    { name: "マホイップ", battleStyle: "サポート", range: "遠隔", type: "特攻" },
+    { name: "ラティオス", battleStyle: "アタック", range: "遠隔", type: "特攻" },
+    //{ name: "ラティアス", battleStyle: "スピード", range: "遠隔", type: "特攻" }
 ];
