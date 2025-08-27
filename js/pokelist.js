@@ -74,5 +74,9 @@ const pokemonList = [
     { name: "アローラライチュウ", battleStyle: "アタック", range: "遠隔", type: "特攻" },
     { name: "マホイップ", battleStyle: "サポート", range: "遠隔", type: "特攻" },
     { name: "ラティオス", battleStyle: "アタック", range: "遠隔", type: "特攻" },
-    //{ name: "ラティアス", battleStyle: "スピード", range: "遠隔", type: "特攻" }
+    { name: "ラティアス", battleStyle: "スピード", range: "遠隔", type: "特攻" },
+    //{ name: "パーモット", battleStyle: "バランス", range: "近接", type: "攻撃" },
+    //{ name: "エンペルト", battleStyle: "バランス", range: "近接", type: "特攻" },
+    //{ name: "ダダリン", battleStyle: "ディフェンス", range: "近接", type: "攻撃" },
+    //{ name: "シャワーズ", battleStyle: "ディフェンス", range: "遠隔", type: "特攻" },
 ];
