@@ -180,11 +180,6 @@ function selectedCompositionTeam(composition) {
             break;
     }
     
-    // ミュウツーが2体以上の場合は再抽選
-    if(pokemonTeam.filter(pokemon => pokemon.name.includes('ミュウツー')).length > 1){
-        pokemonTeam = selectedCompositionTeam(composition);
-    }
-
     return pokemonTeam;
 }
 
@@ -247,11 +242,6 @@ function selectedCompositionTeamDraft(composition) {
         default:
             pokemonTeam = pokemonSelect(10);
             break;
-    }
-
-    // ミュウツーが2体以上の場合は再抽選
-    if(pokemonTeam.filter(pokemon => pokemon.name.includes('ミュウツー')).length > 1){
-        pokemonTeam = selectedCompositionTeamDraft(composition);
     }
 
     return pokemonTeam;
