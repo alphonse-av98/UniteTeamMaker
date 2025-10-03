@@ -77,6 +77,7 @@ const pokemonList = [
     { name: "ラティアス", battleStyle: "サポート", range: "遠隔", type: "特攻" },
     { name: "パーモット", battleStyle: "バランス", range: "近接", type: "攻撃" },
     { name: "エンペルト", battleStyle: "バランス", range: "近接", type: "特攻" },
+    { name: "メガルカリオ", battleStyle: "バランス", range: "近接", type: "攻撃" },
     //{ name: "ダダリン", battleStyle: "バランス", range: "近接", type: "攻撃" },
     //{ name: "シャワーズ", battleStyle: "ディフェンス", range: "遠隔", type: "特攻" },
 ];
