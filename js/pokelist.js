@@ -83,5 +83,6 @@ const pokemonList = [
     { name: "シャワーズ", battleStyle: "ディフェンス", range: "遠隔", type: "特攻" },
     { name: "メガギャラドス", battleStyle: "バランス", range: "近接", type: "攻撃" },
     { name: "メガリザードンY", battleStyle: "バランス", range: "近接", type: "攻撃" },
-    { name: "ニャース", battleStyle: "スピード", range: "近接", type: "攻撃" }
+    { name: "ニャース", battleStyle: "スピード", range: "近接", type: "攻撃" },
+    { name: "ネギガナイト", battleStyle: "バランス", range: "近接", type: "攻撃" }
 ];
