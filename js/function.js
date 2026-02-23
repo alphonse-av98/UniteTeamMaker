@@ -117,10 +117,24 @@ function displayTeam(teamId, team, pokemon) {
     }
 }
 
+function getAvailablePokemon() {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); // 時刻をリセットして日付のみで比較
+
+    return pokemonList.filter(pokemon => {
+        if (!pokemon.releaseDate) {
+            return true; // releaseDateが未設定の場合は常に利用可能とみなす
+        }
+        const releaseDate = new Date(pokemon.releaseDate);
+        return releaseDate <= today;
+    });
+}
+
 function pokemonSelect(index) {
+    const availablePokemon = getAvailablePokemon();
     let pokemons = [];
     do {
-        let pokemon = pokemonList[Math.floor(Math.random() * pokemonList.length)];
+        let pokemon = availablePokemon[Math.floor(Math.random() * availablePokemon.length)];
         if (pokemons.includes(pokemon)) continue;
         pokemons.push(pokemon);
     } while (pokemons.length < index);
@@ -128,9 +142,10 @@ function pokemonSelect(index) {
 }
 
 function pokemonFilteringSelect(index, battleStyle) {
+    const availablePokemon = getAvailablePokemon();
     let pokemons = [];
     do {
-        let pokemon = pokemonList[Math.floor(Math.random() * pokemonList.length)];
+        let pokemon = availablePokemon[Math.floor(Math.random() * availablePokemon.length)];
         if (pokemons.includes(pokemon)) continue;
         if (!battleStyle.includes(pokemon.battleStyle)) continue;
         pokemons.push(pokemon);
