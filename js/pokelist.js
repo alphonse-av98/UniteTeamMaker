@@ -86,6 +86,6 @@ const pokemonList = [
     { name: "ニャース", battleStyle: "スピード", range: "近接", type: "攻撃", releaseDate: "2026-01-09" },
     { name: "ネギガナイト", battleStyle: "バランス", range: "近接", type: "攻撃", releaseDate: "2026-01-30" },
     { name: "サンダー", battleStyle: "アタック", range: "遠隔", type: "特攻", releaseDate: "2026-02-27" },
-    { name: "ファイヤー", battleStyle: "バランス", range: "遠隔", type: "特攻", releaseDate: "2099-03-31" },
+    { name: "ファイヤー", battleStyle: "バランス", range: "遠隔", type: "特攻", releaseDate: "2026-03-13" },
     { name: "フリーザー", battleStyle: "ディフェンス", range: "遠隔", type: "特攻", releaseDate: "2099-03-31" }
 ];
