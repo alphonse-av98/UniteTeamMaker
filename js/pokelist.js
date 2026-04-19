@@ -87,5 +87,8 @@ const pokemonList = [
     { name: "ネギガナイト", battleStyle: "バランス", range: "近接", type: "攻撃", releaseDate: "2026-01-30" },
     { name: "サンダー", battleStyle: "アタック", range: "遠隔", type: "特攻", releaseDate: "2026-02-27" },
     { name: "ファイヤー", battleStyle: "バランス", range: "遠隔", type: "特攻", releaseDate: "2026-03-13" },
-    { name: "フリーザー", battleStyle: "ディフェンス", range: "遠隔", type: "特攻", releaseDate: "2099-03-31" }
+    { name: "フリーザー", battleStyle: "ディフェンス", range: "遠隔", type: "特攻", releaseDate: "2026-04-10" },
+    { name: "バクフーン", battleStyle: "アタック", range: "遠隔", type: "特攻", releaseDate: "2026-04-24" },
+    { name: "オーダイル", battleStyle: "バランス", range: "近接", type: "攻撃", releaseDate: "2026-05-08" },
+    { name: "メガニウム", battleStyle: "サポート", range: "近接", type: "特攻", releaseDate: "2026-05-22" },
 ];
