@@ -92,5 +92,9 @@ const pokemonList = [
     { name: "オーダイル", battleStyle: "バランス", range: "近接", type: "攻撃", releaseDate: "2026-05-08" },
     { name: "メガニウム", battleStyle: "サポート", range: "近接", type: "特攻", releaseDate: "2026-05-22" },
     { name: "ラウドボーン", battleStyle: "アタック", range: "遠隔", type: "特攻", releaseDate: "2026-06-04" },
-    { name: "ウェーニバル", battleStyle: "バランス", range: "近接", type: "攻撃", releaseDate: "2026-06-19"}
+    { name: "ウェーニバル", battleStyle: "バランス", range: "近接", type: "攻撃", releaseDate: "2026-06-19"},
+    { name: "イベルタル", battleStyle: "アタック", range: "遠隔", type: "特攻", releaseDate: "2026-07-03" },
+    { name: "パルキア", battleStyle: "バランス", range: "近接", type: "特攻", releaseDate: "2026-07-17" },
+    { name: "レシラム", battleStyle: "アタック", range: "遠隔", type: "特攻", releaseDate: "2026-08-07" },
+    { name: "ソルガレオ", battleStyle: "バランス", range: "近接", type: "攻撃", releaseDate: "2026-08-21" },
 ];
