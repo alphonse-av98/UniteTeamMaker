@@ -99,6 +99,6 @@ const pokemonList = [
     { name: "ソルガレオ", battleStyle: "バランス", range: "近接", type: "攻撃", releaseDate: "2026-08-21" },
     { name: "モルペコ", battleStyle: "スピード", range: "近接", type: "攻撃", releaseDate: "2026-09-04" },
     { name: "ストリンダー" , battleStyle: "アタック", range: "遠隔", type: "特攻", releaseDate: "2026-09-24" },
-    { name: "サンダース", battleStyle: "スピード", range: "近接", type: "特攻", releaseDate: "2026-10-30" },
-    { name: "ブースター", battleStyle: "バランス", range: "近接", type: "特攻", releaseDate: "2026-10-30" },
+    { name: "サンダース", battleStyle: "スピード", range: "近接", type: "特攻", releaseDate: "2026-10-13" },
+    { name: "ブースター", battleStyle: "バランス", range: "近接", type: "特攻", releaseDate: "2026-10-13" },
 ];
